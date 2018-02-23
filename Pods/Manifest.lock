@@ -1,0 +1,48 @@
+PODS:
+  - AHKActionSheet (0.5.4)
+  - AMPopTip (3.1.4)
+  - AMWaveTransition (0.6.2)
+  - BAFluidView (0.2.3)
+  - BubbleTransition (2.0.2)
+  - CVCalendar (1.6.1)
+  - pop (1.0.10)
+  - SLPagingViewSwift-Swift3 (1.0.0)
+  - SwipeTransition (0.1.4)
+  - UICountingLabel (1.4.1)
+
+DEPENDENCIES:
+  - AHKActionSheet
+  - AMPopTip
+  - AMWaveTransition
+  - BAFluidView
+  - BubbleTransition
+  - CVCalendar
+  - pop
+  - SLPagingViewSwift-Swift3 (from `https://github.com/davidseek/SLPagingViewSwift-Swift-3-Tinder-Twitter.git`)
+  - SwipeTransition
+  - UICountingLabel
+
+EXTERNAL SOURCES:
+  SLPagingViewSwift-Swift3:
+    :git: https://github.com/davidseek/SLPagingViewSwift-Swift-3-Tinder-Twitter.git
+
+CHECKOUT OPTIONS:
+  SLPagingViewSwift-Swift3:
+    :commit: 6314e85721f0bb17217aab16cad3fca2026065a8
+    :git: https://github.com/davidseek/SLPagingViewSwift-Swift-3-Tinder-Twitter.git
+
+SPEC CHECKSUMS:
+  AHKActionSheet: f0b312b5c689f72924d231c39dae140ecd5c1d46
+  AMPopTip: 74c343e06fb7cd859fa2bd672e45edb97836f1b0
+  AMWaveTransition: 98952310574779e4ca7e7f4d89f8b1043cdad171
+  BAFluidView: 5d84ef109831b97740f75b6d785e51f13fa08398
+  BubbleTransition: 7d98ed7d56f0940e83f350a98103ad473491c769
+  CVCalendar: 505c11b11a088b43f159806e791eba1c2540853b
+  pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
+  SLPagingViewSwift-Swift3: 52ccbe21930f5700f5eacccafff0a712f57d8d67
+  SwipeTransition: c5542be9fa21ba3b04ce16d7b3e732a99d2e46da
+  UICountingLabel: faf890b505d96312e324a86718f031fafffb0ccb
+
+PODFILE CHECKSUM: b32a5f48ae2ba10338d88982c6ed64d43796c973
+
+COCOAPODS: 1.4.0

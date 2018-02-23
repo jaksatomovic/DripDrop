@@ -1,0 +1,19 @@
+{
+  "name": "SLPagingViewSwift-Swift3",
+  "version": "1.0.0",
+  "summary": "Navigation bar like Tinder or Twitter",
+  "homepage": "https://github.com/StefanLage/SLPagingViewSwift",
+  "license": "MIT",
+  "authors": {
+    "StefanLage": "lagestfan@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/davidseek/SLPagingViewSwift-Swift-3-Tinder-Twitter.git",
+    "tag": "1.0.0"
+  },
+  "source_files": "SLPagingViewSwift/**/*.swift",
+  "requires_arc": true,
+  "platforms": {
+    "ios": "8.0"
+  }
+}
