@@ -7,14 +7,7 @@
 //
 
 import UIKit
-import SwipeTransition
 
-class SwipeNavigationController: UINavigationController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        swipeBack = SwipeBackController(navigationController: self)
-    }
-}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -75,8 +68,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let img3 = #imageLiteral(resourceName: "settings-icon").withRenderingMode(.alwaysTemplate)
         
         let items = [UIImageView(image: img1), UIImageView(image: img2), UIImageView(image: img3)]
-        let controllers = [vc1, vc2, vc3]
-        controller = SLPagingViewSwift(items: items, controllers: controllers as! [UIViewController] , showPageControl: false)
+        let controllers: [UIViewController] = [vc1, vc2, vc3]
+        controller = SLPagingViewSwift(items: items, controllers: controllers, showPageControl: false)
         
         controller.pagingViewMoving = ({ subviews in
             if let imageViews = subviews as? [UIImageView] {
@@ -141,7 +134,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        realmNotification = watchConnectivityHelper.setupWatchUpdates()
         let vc = MainController()
         self.window?.rootViewController = SwipeNavigationController(rootViewController: vc)
-//        self.window?.rootViewController = UINavigationController(rootViewController: vc)
     }
     
 }

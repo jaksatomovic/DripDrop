@@ -7,10 +7,8 @@
 //
 
 import Foundation
-import  CoreData
-/**
- An Entry represents an entire day worth of input
- */
+import CoreData
+
 extension Entry {
     
     /**
@@ -19,32 +17,32 @@ extension Entry {
      - parameter goal: The daily goal
      - parameter date: The date of the portion
      */
-    func addGulp(_ quantity: Double, goal: Double, date: Date) {
-        let context = CoreDataManager.shared.persistentContainer.viewContext
-        let gulp = NSEntityDescription.insertNewObject(forEntityName: "Gulp", into: context) as! Gulp
-        var entry = EntryHandler.sharedHandler.entryForDate(date)
-        if entry == nil {
-            entry = EntryHandler.sharedHandler.createEntryForDate(date)
-        } else {
-            entry = EntryHandler.sharedHandler.currentEntry()
-        }
-        
-        gulp.entry = entry
-        gulp.date = date
-        gulp.quantity = quantity
-        entry?.quantity += quantity
-        entry?.goal = goal
-        entry?.date = date
-        if goal > 0 {
-            entry?.percentage = ((entry?.quantity)! / (entry?.goal)!) * 100.0
-        }
-        do {
-            print(entry as Any)
-            try context.save()
-        } catch let saveErr {
-            print("Failed to save company:", saveErr)
-        }
-    }
+//    func addGulp(_ quantity: Double, goal: Double, date: Date) {
+//        let context = CoreDataManager.shared.persistentContainer.viewContext
+//        let gulp = NSEntityDescription.insertNewObject(forEntityName: "Gulp", into: context) as! Gulp
+//        var entry = EntryHandler.sharedHandler.entryForDate(date)
+//        if entry == nil {
+//            entry = EntryHandler.sharedHandler.createEntryForDate(date)
+//        } else {
+//            entry = EntryHandler.sharedHandler.currentEntry()
+//        }
+//
+//        gulp.entry = entry
+//        gulp.date = date
+//        gulp.quantity = quantity
+//        entry?.quantity += quantity
+//        entry?.goal = goal
+//        entry?.date = date
+//        if goal > 0 {
+//            entry?.percentage = ((entry?.quantity)! / (entry?.goal)!) * 100.0
+//        }
+//        do {
+//            print(entry as Any)
+//            try context.save()
+//        } catch let saveErr {
+//            print("Failed to save company:", saveErr)
+//        }
+//    }
     
     /**
      Removes the last portion

@@ -23,6 +23,28 @@ struct CoreDataManager {
     }()
     
     
+//    open func addGulp(_ quantity: Double, date: Date) {
+//        //        HealthKitHelper.sharedHelper.saveSample(quantity, date: date)
+//        let context = CoreDataManager.shared.persistentContainer.viewContext
+//        let gulp = NSEntityDescription.insertNewObject(forEntityName: "Gulp", into: context) as! Gulp
+//        var entry = Entry(context: context)
+//
+//        if gulp.entry == nil {
+//            entry = createEntryForDate(date)
+//            print ("ENTRY FOR DATE: \(entry)")
+//        } else {
+//            entry = currentEntry()
+//            print ("CURRENT: \(entry)")
+//        }
+//        do {
+//            entry.addGulp(quantity, goal: self.userDefaults.double(forKey: Constants.Gulp.goal.key()), date: date)
+//            try context.save()
+//        } catch let saveErr {
+//            print("Failed to save company:", saveErr)
+//        }
+//
+//    }
+    
     func addGulp(quantity: Double) {
 //        HealthKitHelper.sharedHelper.saveSample(quantity, date: date)
         let context = CoreDataManager.shared.persistentContainer.viewContext
@@ -30,7 +52,7 @@ struct CoreDataManager {
         var entry = CoreDataManager.shared.entryForDate(Date())
         
         if entry == nil {
-            print("radim novi entry")
+            print("creating new entry")
             entry = NSEntityDescription.insertNewObject(forEntityName: "Entry", into: context) as? Entry
         }
 
@@ -44,13 +66,45 @@ struct CoreDataManager {
         gulp.date = date
         gulp.quantity = quantity
         
-        entry?.gulps = [gulp]
+        gulp.entry = entry
         
         do {
             try context.save()
             
         } catch let saveErr {
             print("Failed to save entry:", saveErr)
+        }
+    }
+    
+    func createEntryForDate(_ date: Date) -> Entry {
+        let contex = CoreDataManager.shared.persistentContainer.viewContext
+        let newEntry = NSEntityDescription.insertNewObject(forEntityName: "Entry", into: contex) as! Entry
+        newEntry.date = date
+        do {
+            try contex.save()
+        } catch let saveErr {
+            print("Failed to save entry:", saveErr)
+        }
+        return newEntry
+
+    }
+
+    func entryForToday() -> Entry? {
+        return entryForDate(Date())
+    }
+    
+    func currentEntry() -> Entry {
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        if let entry = entryForToday() {
+            return entry
+        } else {
+            let newEntry = Entry(context: context)
+            do {
+                try context.save()
+            } catch let saveErr {
+                print("Failed to save entry:", saveErr)
+            }
+            return newEntry
         }
     }
 
@@ -77,11 +131,6 @@ struct CoreDataManager {
 
         do {
             result = try context.fetch(request)
-            for data in result {
-                print(data.date as Any )
-                print(data.percentage as Any )
-                print(data.gulps?.allObjects as Any )
-            }
         } catch {
             let fetchError = error as NSError
             print(fetchError)
@@ -90,47 +139,30 @@ struct CoreDataManager {
     }
 
     
-//    func fetchEntries() -> [Entry] {
-//        let context = persistentContainer.viewContext
-//        
-//        let fetchRequest = NSFetchRequest<Entry>(entityName: "Entry")
-//        do {
-//            let entries = try context.fetch(fetchRequest)
-//            print("--------------------------------")
-//            for i in entries {
-//                for x in i.gulps! {
-//                    print ("OVO JE GULP: \(x) ")
-//                }
-//            }
-//            return entries
-//        } catch let fetchErr {
-//            print("Failed to fetch companies:", fetchErr)
-//            return []
-//        }
-//    }
+    func fetchEntries() -> [Entry] {
+        let context = persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<Entry>(entityName: "Entry")
+        do {
+            let entries = try context.fetch(fetchRequest)
+            print("--------------------------------")
+            for i in entries {
+                for x in i.gulps! {
+                    print ("OVO JE GULP: \(x) ")
+                }
+            }
+            return entries
+        } catch let fetchErr {
+            print("Failed to fetch companies:", fetchErr)
+            return []
+        }
+    }
 
     func currentPercentage() -> Double {
         return currentEntry().percentage
     }
     
-    /**
-     Returns the current entry if available, or creates a new one instead
-     - returns: Entry
-     */
-    func currentEntry() -> Entry {
-        let context = CoreDataManager.shared.persistentContainer.viewContext
-        if let entry = entryForDate(Date()) {
-            return entry
-        } else {
-            let newEntry = Entry(context: context)
-            do {
-                try context.save()
-            } catch let saveErr {
-                print("Failed to save company:", saveErr)
-            }
-            return newEntry
-        }
-    }    
+   
     
     
     func removeLastGulp() {
@@ -158,5 +190,40 @@ struct CoreDataManager {
         }
     }
 
+    func overallQuantity() -> Double {
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        var sum: Double = 0.0
+        let fetchRequest = NSFetchRequest<Entry>(entityName: "Entry")
+        
+        do {
+            let entries = try context.fetch(fetchRequest)
+            entries.forEach({ (entry) in
+                sum += entry.quantity
+            })
+            
+        } catch let fetchErr {
+            print("Failed to fetch entry:", fetchErr)
+        }
+        
+        return sum
+    }
+ 
+    func daysTracked() -> Int {
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        var count: Int = 0
+        let fetchRequest = NSFetchRequest<Entry>(entityName: "Entry")
+        
+        do {
+            let entries = try context.fetch(fetchRequest)
+            
+            entries.forEach({ (entry) in
+                count += 1
+            })
+            
+        } catch let fetchErr {
+            print("Failed to fetch entry:", fetchErr)
+        }
+        return count
+    }
     
 }

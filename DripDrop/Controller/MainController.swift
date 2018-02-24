@@ -86,12 +86,12 @@ class MainController: UIViewController, UIAlertViewDelegate {
         super.viewWillAppear(animated)
         
         // Ask (just once) the user for feedback once he's logged more than 10 liters/ounces
-//        if !userDefaults.bool(forKey: "FEEDBACK") {
-//            if EntryHandler.sharedHandler.overallQuantity() > 10 {
+        if !userDefaults.bool(forKey: "FEEDBACK") {
+            if CoreDataManager.shared.overallQuantity() > 10 {
 //                animateStarButton()
-//                print("ANIMATING STAR BUTTON")
-//            }
-//        }
+                print("ANIMATING STAR BUTTON")
+            }
+        }
     }
     
     override open func viewDidAppear(_ animated: Bool) {
@@ -100,7 +100,7 @@ class MainController: UIViewController, UIAlertViewDelegate {
         Globals.showPopTipOnceForKey("HEALTH_HINT", userDefaults: userDefaults,
                                      popTipText: NSLocalizedString("health.poptip", comment: ""),
                                      inView: view,
-                                     fromFrame: CGRect(x: view.frame.width - 60, y: view.frame.height / 2, width: 1, height: 1), direction: .right, color: .palette_destructive)
+                                     fromFrame: CGRect(x: view.frame.width - 60, y: view.frame.height, width: 1, height: 1), direction: .left, color: .palette_destructive)
     }
     
     open override func viewDidLoad() {
@@ -110,6 +110,8 @@ class MainController: UIViewController, UIAlertViewDelegate {
         setupViews()
         view.layoutIfNeeded()
         initProgressMeter()
+        
+        print(CoreDataManager.shared.fetchEntries())
         
         percentageLabel.animationDuration = 1.5
         percentageLabel.format = "%d%%";
@@ -174,6 +176,7 @@ class MainController: UIViewController, UIAlertViewDelegate {
     
     func updateCurrentEntry(_ delta: Double) {
         CoreDataManager.shared.addGulp(quantity: delta)
+        updateUI()
     }
     
     @objc func updateUI() {
@@ -193,11 +196,11 @@ class MainController: UIViewController, UIAlertViewDelegate {
 
     
     @objc func removeGulpAction() {
-        print("removing")
         let controller = UIAlertController(title: NSLocalizedString("undo title", comment: ""), message: NSLocalizedString("undo message", comment: ""), preferredStyle: .alert)
         let no = UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .default) { _ in }
         let yes = UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .cancel) { _ in
             CoreDataManager.shared.removeLastGulp()
+            self.updateUI()
         }
         [yes, no].forEach { controller.addAction($0) }
         present(controller, animated: true) {}
