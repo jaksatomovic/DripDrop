@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		600F628E203F170000A5A340 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600F628D203F170000A5A340 /* SettingsController.swift */; };
 		601B0BF3203F0E0F00A59175 /* UIView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601B0BF2203F0E0F00A59175 /* UIView+Anchors.swift */; };
+		603A99A620404F2F00D16A32 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603A99A520404F2F00D16A32 /* CoreDataManager.swift */; };
+		603A99A92040546600D16A32 /* CoreDataModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 603A99A72040546600D16A32 /* CoreDataModels.xcdatamodeld */; };
 		60AF2505203F378E0052C90A /* PagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AF2504203F378E0052C90A /* PagingView.swift */; };
 		60AF250D203F80B60052C90A /* drop.caf in Resources */ = {isa = PBXBuildFile; fileRef = 60AF250C203F80B50052C90A /* drop.caf */; };
 		60AF7DF2203F24DA00F7288C /* ProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AF7DF1203F24DA00F7288C /* ProgressController.swift */; };
-		60B42F24203F8203000EEC08 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 60B42F23203F8203000EEC08 /* Localizable.strings */; };
 		60B42F26203F8228000EEC08 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60B42F25203F8228000EEC08 /* SplashScreen.storyboard */; };
 		60B42F2A203F86E8000EEC08 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B42F29203F86E8000EEC08 /* Entry.swift */; };
-		60B42F30203F872B000EEC08 /* Gulp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B42F2F203F872B000EEC08 /* Gulp.swift */; };
 		60B42F32203F873E000EEC08 /* EntryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B42F31203F873E000EEC08 /* EntryHandler.swift */; };
 		60B97D98203EEA7C000C3BF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B97D97203EEA7C000C3BF3 /* AppDelegate.swift */; };
 		60B97D9A203EEA7C000C3BF3 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B97D99203EEA7C000C3BF3 /* MainController.swift */; };
@@ -43,13 +43,13 @@
 		5A90A463B99FEF05A25E7260 /* Pods-DripDrop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DripDrop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DripDrop/Pods-DripDrop.debug.xcconfig"; sourceTree = "<group>"; };
 		600F628D203F170000A5A340 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		601B0BF2203F0E0F00A59175 /* UIView+Anchors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Anchors.swift"; path = "DripDrop/UIView+Anchors.swift"; sourceTree = SOURCE_ROOT; };
+		603A99A520404F2F00D16A32 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		603A99A82040546600D16A32 /* CoreDataModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModels.xcdatamodel; sourceTree = "<group>"; };
 		60AF2504203F378E0052C90A /* PagingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingView.swift; sourceTree = "<group>"; };
 		60AF250C203F80B50052C90A /* drop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = drop.caf; sourceTree = "<group>"; };
 		60AF7DF1203F24DA00F7288C /* ProgressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressController.swift; sourceTree = "<group>"; };
-		60B42F23203F8203000EEC08 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		60B42F25203F8228000EEC08 /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
 		60B42F29203F86E8000EEC08 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
-		60B42F2F203F872B000EEC08 /* Gulp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gulp.swift; sourceTree = "<group>"; };
 		60B42F31203F873E000EEC08 /* EntryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryHandler.swift; sourceTree = "<group>"; };
 		60B97D94203EEA7C000C3BF3 /* DripDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DripDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60B97D97203EEA7C000C3BF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,9 +106,10 @@
 		60B42F27203F8585000EEC08 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				603A99A520404F2F00D16A32 /* CoreDataManager.swift */,
 				60B42F29203F86E8000EEC08 /* Entry.swift */,
-				60B42F2F203F872B000EEC08 /* Gulp.swift */,
 				60B42F31203F873E000EEC08 /* EntryHandler.swift */,
+				603A99A72040546600D16A32 /* CoreDataModels.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,8 +183,6 @@
 		60FB5979203EF72A0050AC47 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				60FB5987203EF7F50050AC47 /* NotificationHelper.swift */,
-				60FB5989203EF8F00050AC47 /* Extensions.swift */,
 				60AF2504203F378E0052C90A /* PagingView.swift */,
 				601B0BF2203F0E0F00A59175 /* UIView+Anchors.swift */,
 				60FB5981203EF7D80050AC47 /* UINavigationController+StatusBar.swift */,
@@ -195,12 +194,13 @@
 		60FB597C203EF7B60050AC47 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				60B42F23203F8203000EEC08 /* Localizable.strings */,
 				60AF250C203F80B50052C90A /* drop.caf */,
 				60FB5985203EF7EE0050AC47 /* Globals.swift */,
 				60FB5983203EF7EA0050AC47 /* Colors.swift */,
 				60FB597F203EF7C90050AC47 /* Constants.swift */,
 				60FB597D203EF7BE0050AC47 /* Settings.swift */,
+				60FB5987203EF7F50050AC47 /* NotificationHelper.swift */,
+				60FB5989203EF8F00050AC47 /* Extensions.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -270,7 +270,6 @@
 				60B97D9F203EEA7C000C3BF3 /* Assets.xcassets in Resources */,
 				60FB5968203EF6800050AC47 /* Onboarding.storyboard in Resources */,
 				60FB5975203EF6F90050AC47 /* KaushanScript.ttf in Resources */,
-				60B42F24203F8203000EEC08 /* Localizable.strings in Resources */,
 				60AF250D203F80B60052C90A /* drop.caf in Resources */,
 				60FB5977203EF6FE0050AC47 /* Lato-Light.ttf in Resources */,
 				60B42F26203F8228000EEC08 /* SplashScreen.storyboard in Resources */,
@@ -363,12 +362,13 @@
 				60B97D9A203EEA7C000C3BF3 /* MainController.swift in Sources */,
 				60FB5971203EF6AE0050AC47 /* NotificationViewController.swift in Sources */,
 				60FB5988203EF7F50050AC47 /* NotificationHelper.swift in Sources */,
-				60B42F30203F872B000EEC08 /* Gulp.swift in Sources */,
 				60FB5986203EF7EE0050AC47 /* Globals.swift in Sources */,
 				601B0BF3203F0E0F00A59175 /* UIView+Anchors.swift in Sources */,
+				603A99A620404F2F00D16A32 /* CoreDataManager.swift in Sources */,
 				60B42F32203F873E000EEC08 /* EntryHandler.swift in Sources */,
 				60AF7DF2203F24DA00F7288C /* ProgressController.swift in Sources */,
 				600F628E203F170000A5A340 /* SettingsController.swift in Sources */,
+				603A99A92040546600D16A32 /* CoreDataModels.xcdatamodeld in Sources */,
 				60FB596D203EF6A30050AC47 /* GulpsViewController.swift in Sources */,
 				60FB5980203EF7C90050AC47 /* Constants.swift in Sources */,
 				60FB598A203EF8F00050AC47 /* Extensions.swift in Sources */,
@@ -544,6 +544,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		603A99A72040546600D16A32 /* CoreDataModels.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				603A99A82040546600D16A32 /* CoreDataModels.xcdatamodel */,
+			);
+			currentVersion = 603A99A82040546600D16A32 /* CoreDataModels.xcdatamodel */;
+			path = CoreDataModels.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 60B97D8C203EEA7C000C3BF3 /* Project object */;
 }

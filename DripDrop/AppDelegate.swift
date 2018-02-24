@@ -21,7 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var controller: SLPagingViewSwift!
-
+    var vc1: UIViewController!
+    var vc2: UIViewController!
+    var vc3: UIViewController!
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -35,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             loadOnboardingInterface()
         } else {
             setupSwipeMenu()
-//            checkVersion()
+            checkVersion()
         }
         
         return true
@@ -43,20 +46,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     /**
+     Check the app version and perform required tasks when upgrading
+     */
+    func checkVersion() {
+        let userDefaults = UserDefaults.groupUserDefaults()
+        let current = userDefaults.integer(forKey: "BUNDLE_VERSION")
+        if let versionString = Bundle.main.infoDictionary?["CFBundleVersion"] as? String, let version = Int(versionString) {
+            if current < 13 {
+                NotificationHelper.rescheduleNotifications()
+            }
+            userDefaults.set(version, forKey: "BUNDLE_VERSION")
+            userDefaults.synchronize()
+        }
+    }
+    
+    
+    /**
      Sets the swipe menu of the app
      */
     func setupSwipeMenu() {
-        let vc1 = ProgressController()
-        let vc2 = MainController()
-        let vc3 = SettingsController()
+        
+        vc1 = ProgressController()
+        vc2 = MainController()
+        vc3 = SettingsController()
         
         let img1 = #imageLiteral(resourceName: "calendar-icon").withRenderingMode(.alwaysTemplate)
-        let img2 = #imageLiteral(resourceName: "drink-icon").withRenderingMode(.alwaysTemplate)
+        let img2 = #imageLiteral(resourceName: "big").withRenderingMode(.alwaysOriginal)
         let img3 = #imageLiteral(resourceName: "settings-icon").withRenderingMode(.alwaysTemplate)
         
         let items = [UIImageView(image: img1), UIImageView(image: img2), UIImageView(image: img3)]
         let controllers = [vc1, vc2, vc3]
-        controller = SLPagingViewSwift(items: items, controllers: controllers, showPageControl: false)
+        controller = SLPagingViewSwift(items: items, controllers: controllers as! [UIViewController] , showPageControl: false)
         
         controller.pagingViewMoving = ({ subviews in
             if let imageViews = subviews as? [UIImageView] {

@@ -11,8 +11,10 @@ import BAFluidView
 import UICountingLabel
 import BubbleTransition
 import CoreMotion
+import CoreData
 
-open class MainController: UIViewController, UIAlertViewDelegate, UIViewControllerTransitioningDelegate {
+class MainController: UIViewController, UIAlertViewDelegate {
+    
     
     var percentageLabel: UICountingLabel = {
         let label = UICountingLabel()
@@ -22,21 +24,47 @@ open class MainController: UIViewController, UIAlertViewDelegate, UIViewControll
         label.font = UIFont.init(name: "KaushanScript-Regular", size: 34.0)
         return label
     }()
+   
+    
     var addButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 25
         button.clipsToBounds = true
-        button.setImage(#imageLiteral(resourceName: "small-tiny-icon"), for: .normal)
-        button.backgroundColor = Palette.palette_main
+        button.layer.borderColor = Palette.palette_main.cgColor
+        button.layer.borderWidth = 2
+        button.backgroundColor = .white
+        button.isUserInteractionEnabled = true
+        button.isEnabled = true
+        button.tintColor = Palette.palette_main
+        button.titleLabel?.font = UIFont(name: "HelveticaNeue", size: 14)
+        button.setTitle("Drink", for: .normal)
+        button.setTitleColor(Palette.palette_main, for: .normal)
+        button.addTarget(self, action: #selector(MainController.addButtonPressed), for: .touchUpInside)
         return button
     }()
-//    @IBOutlet open weak var smallButton: UIButton!
-//    @IBOutlet open weak var largeButton: UIButton!
-//    @IBOutlet open weak var minusButton: UIButton!
-//    @IBOutlet weak var starButton: UIButton!
+    
+    var starButton: UIButton = {
+        let button = UIButton()
+        button.clipsToBounds = true
+        button.isEnabled = true
+        button.setImage(#imageLiteral(resourceName: "star").withRenderingMode(.alwaysOriginal), for: .normal)
+//        button.addTarget(self, action: #selector(MainController.drinkButtonPressed(_:)), for: .touchUpInside)
+        return button
+    }()
+    
+    var minusButton: UIButton = {
+        let button = UIButton()
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 10
+        button.backgroundColor = .lightGray
+        button.setImage(#imageLiteral(resourceName: "minus-icon").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(MainController.removeGulpAction), for: .touchUpInside)
+        return button
+    }()
+
     var meterContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = UIColor(red: 236/255, green: 236/255, blue: 236/255, alpha: 1)
         return view
     }()
     var maskImage: UIImageView = {
@@ -57,21 +85,31 @@ open class MainController: UIViewController, UIAlertViewDelegate, UIViewControll
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-// Ask (just once) the user for feedback once he's logged more than 10 liters/ounces
+        // Ask (just once) the user for feedback once he's logged more than 10 liters/ounces
 //        if !userDefaults.bool(forKey: "FEEDBACK") {
 //            if EntryHandler.sharedHandler.overallQuantity() > 10 {
 //                animateStarButton()
+//                print("ANIMATING STAR BUTTON")
 //            }
 //        }
+    }
+    
+    override open func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        Globals.showPopTipOnceForKey("HEALTH_HINT", userDefaults: userDefaults,
+                                     popTipText: NSLocalizedString("health.poptip", comment: ""),
+                                     inView: view,
+                                     fromFrame: CGRect(x: view.frame.width - 60, y: view.frame.height / 2, width: 1, height: 1), direction: .right, color: .palette_destructive)
     }
     
     open override func viewDidLoad() {
         super.viewDidLoad()
 
+
         setupViews()
         view.layoutIfNeeded()
         initProgressMeter()
-
         
         percentageLabel.animationDuration = 1.5
         percentageLabel.format = "%d%%";
@@ -88,11 +126,21 @@ open class MainController: UIViewController, UIAlertViewDelegate, UIViewControll
         NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     
+    
+    // MARK: - UI Layout
+    
     func setupViews() {
         view.backgroundColor = .white
         view.addSubview(percentageLabel)
-        view.addSubview(addButton)
+        view.addSubview(starButton)
+        view.addSubview(minusButton)
         view.addSubview(meterContainerView)
+        view.addSubview(addButton)
+        view.bringSubview(toFront: addButton)
+        
+        starButton.anchor(nil, left: percentageLabel.centerXAnchor, bottom: percentageLabel.topAnchor, right: nil, topConstant: 0, leftConstant: -15, bottomConstant: 20, rightConstant: 0, widthConstant: 30, heightConstant: 30)
+        
+        minusButton.anchor(starButton.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 35, widthConstant: 20, heightConstant: 20)
         
         percentageLabel.anchor(nil, left: view.leftAnchor, bottom: meterContainerView.topAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 30, rightConstant: 0, widthConstant: 0, heightConstant: 60)
         
@@ -100,7 +148,7 @@ open class MainController: UIViewController, UIAlertViewDelegate, UIViewControll
         meterContainerView.addSubview(maskImage)
         maskImage.fillSuperview()
         
-        addButton.anchor(meterContainerView.bottomAnchor, left: view.centerXAnchor, bottom: nil, right: nil, topConstant: 20, leftConstant: -25, bottomConstant: 0, rightConstant: 0, widthConstant: 50, heightConstant: 50)
+        addButton.anchor(meterContainerView.bottomAnchor, left: view.centerXAnchor, bottom: nil, right: nil, topConstant: 10, leftConstant: -50, bottomConstant: 0, rightConstant: 0, widthConstant: 100, heightConstant: 50)
         
     }
     
@@ -120,23 +168,16 @@ open class MainController: UIViewController, UIAlertViewDelegate, UIViewControll
     }
     
     
-    open override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        Globals.showPopTipOnceForKey("HEALTH_HINT", userDefaults: userDefaults,
-                                     popTipText: NSLocalizedString("health.poptip", comment: ""),
-                                     inView: view,
-                                     fromFrame: CGRect(x: view.frame.width - 60, y: view.frame.height, width: 1, height: 1), direction: .up, color: .palette_destructive)
-    }
+ 
     
     // MARK: - UI update
     
     func updateCurrentEntry(_ delta: Double) {
-//        EntryHandler.sharedHandler.addGulp(delta)
+        CoreDataManager.shared.addGulp(quantity: delta)
     }
     
     @objc func updateUI() {
-        let percentage = 90.0 //EntryHandler.sharedHandler.currentPercentage()
+        let percentage = CoreDataManager.shared.currentPercentage()
         percentageLabel.countFromCurrentValue(to: CGFloat(round(percentage)))
         var fillTo = Double(percentage / 100.0)
         if fillTo > 1 {
@@ -147,18 +188,32 @@ open class MainController: UIViewController, UIAlertViewDelegate, UIViewControll
         }
     }
     
-    
     // MARK: - Actions
     
-    @IBAction func removeGulpAction() {
+
+    
+    @objc func removeGulpAction() {
+        print("removing")
         let controller = UIAlertController(title: NSLocalizedString("undo title", comment: ""), message: NSLocalizedString("undo message", comment: ""), preferredStyle: .alert)
         let no = UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .default) { _ in }
         let yes = UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .cancel) { _ in
-//            EntryHandler.sharedHandler.removeLastGulp()
+            CoreDataManager.shared.removeLastGulp()
         }
         [yes, no].forEach { controller.addAction($0) }
         present(controller, animated: true) {}
     }
+
+    @objc func addButtonPressed() {
+        Globals.showPopTipOnceForKey("UNDO_HINT", userDefaults: userDefaults,
+                                     popTipText: NSLocalizedString("undo poptip", comment: ""),
+                                     inView: view,
+                                     fromFrame: minusButton.frame)
+        //        let portion = addButton == sender ? Constants.Gulp.small.key() : Constants.Gulp.big.key()
+        let portion = Constants.Gulp.small.key()
+        updateCurrentEntry(userDefaults.double(forKey: portion))
+        
+    }
+ 
     
     // MARK: - Tear down
     
@@ -166,4 +221,5 @@ open class MainController: UIViewController, UIAlertViewDelegate, UIViewControll
         NotificationCenter.default.removeObserver(self)
     }
 }
+
 
