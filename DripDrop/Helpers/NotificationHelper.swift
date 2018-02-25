@@ -3,7 +3,6 @@ import UIKit
 
 class NotificationHelper {
 
-  /// Version 1.4 introduces a new sound. Users from previous versions need to reschedule the local notifications
   class func rescheduleNotifications() {
     let userDefaults = UserDefaults.groupUserDefaults()
     if (!userDefaults.bool(forKey: Constants.Notification.on.key())) {

@@ -11,14 +11,8 @@ import AHKActionSheet
 //import WatchConnectivity
 
 class SettingsController: UIViewController {
-   
     
     let cellID = "cellID"
-    let dictCellID = "dictCellID"
-    let timeCellID = "timeCellID"
-    let portionsCellID = "portionsCellID"
-    let aboutCellID = "aboutCellID"
-    
     
     let userDefaults = UserDefaults.groupUserDefaults()
     

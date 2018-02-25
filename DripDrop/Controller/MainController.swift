@@ -13,7 +13,9 @@ import BubbleTransition
 import CoreMotion
 import CoreData
 
+
 class MainController: UIViewController, UIAlertViewDelegate {
+    
     
     
     var percentageLabel: UICountingLabel = {
@@ -139,7 +141,8 @@ class MainController: UIViewController, UIAlertViewDelegate {
         view.bringSubview(toFront: addButton)
 
         starButton.isHidden = true
-        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(addButtonLongPress))
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPress(_ :)))
+        longGesture.minimumPressDuration = 1
         addButton.addGestureRecognizer(longGesture)
 
         
@@ -215,23 +218,35 @@ class MainController: UIViewController, UIAlertViewDelegate {
     }
 
     @objc func addButtonPressed() {
-//        minusButton.isHidden = false
         addButton.setTitleColor(Palette.palette_main, for: .normal)
         addButton.backgroundColor = .white
         Globals.showPopTipOnceForKey("UNDO_HINT", userDefaults: userDefaults,
                                      popTipText: NSLocalizedString("undo poptip", comment: ""),
                                      inView: view,
                                      fromFrame: minusButton.frame)
-        //        let portion = addButton == sender ? Constants.Gulp.small.key() : Constants.Gulp.big.key()
+        Globals.showPopTipOnceForKey("LONG_PRESS_HINT", userDefaults: userDefaults,
+                                     popTipText: NSLocalizedString("long press poptip", comment: ""),
+                                     inView: view,
+                                     fromFrame: addButton.frame)
         let portion = Constants.Gulp.small.key()
         updateCurrentEntry(userDefaults.double(forKey: portion))
         
     }
     
-    @objc func addButtonLongPress() {
-        print("long press...")
+  
+     @objc func longPress(_ sender: UILongPressGestureRecognizer) {
+        
+        if (sender.state == UIGestureRecognizerState.ended) {
+            print("Long press Ended");
+        } else if (sender.state == UIGestureRecognizerState.began) {
+            print("Long press detected.");
+            addButton.setTitleColor(Palette.palette_main, for: .normal)
+            addButton.backgroundColor = .white
+            let portion = Constants.Gulp.big.key()
+            updateCurrentEntry(userDefaults.double(forKey: portion))
+        }
     }
-    
+
     @objc func addButtonTouched() {
         addButton.setTitleColor(UIColor.white, for: .normal)
         addButton.backgroundColor = Palette.palette_main

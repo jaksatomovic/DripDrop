@@ -158,7 +158,7 @@ struct CoreDataManager {
         let startDate = calendar.startOfDay(for: date)
         let endDate = calendar.date(byAdding: .day, value: 1, to: startDate)
 
-        let predicate = NSPredicate(format: "date >= %@ AND date < %@", startDate as! CVarArg, endDate! as CVarArg)
+        let predicate = NSPredicate(format: "date >= %@ AND date < %@", startDate as CVarArg, endDate! as CVarArg)
         request.predicate = predicate
 
         do {

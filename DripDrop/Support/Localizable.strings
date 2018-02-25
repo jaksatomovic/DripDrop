@@ -8,6 +8,7 @@
 /* Main */
 "drink title" = "Drink!";
 "undo poptip" = "Tap here to undo your latest action";
+"long press poptip" = "if long press button it will count bigger gulp";
 "undo title" = "Undo";
 "undo message" = "Undo latest action?";
 "No" = "No";
@@ -19,7 +20,7 @@
 "share text" = "Keeping healthy! I drank %d %@ of water over %d days. https://goo.gl/reTyQU @GulpsApp";
 "unit format" = "%@ drank over";
 "goal met" = "Goal Met!";
-"portion.add" = "Add a new portion:";
+"portion.add" = "Add a new portion for today:";
 
 /* Settings */
 "settings title" = "Preferences";
