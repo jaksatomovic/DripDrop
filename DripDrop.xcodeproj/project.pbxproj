@@ -15,12 +15,12 @@
 		60AF250D203F80B60052C90A /* drop.caf in Resources */ = {isa = PBXBuildFile; fileRef = 60AF250C203F80B50052C90A /* drop.caf */; };
 		60AF7DF2203F24DA00F7288C /* ProgressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AF7DF1203F24DA00F7288C /* ProgressController.swift */; };
 		60B42F26203F8228000EEC08 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60B42F25203F8228000EEC08 /* SplashScreen.storyboard */; };
-		60B42F2A203F86E8000EEC08 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B42F29203F86E8000EEC08 /* Entry.swift */; };
 		60B97D98203EEA7C000C3BF3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B97D97203EEA7C000C3BF3 /* AppDelegate.swift */; };
 		60B97D9A203EEA7C000C3BF3 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B97D99203EEA7C000C3BF3 /* MainController.swift */; };
 		60B97D9F203EEA7C000C3BF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60B97D9E203EEA7C000C3BF3 /* Assets.xcassets */; };
 		60E75AF120420D7B002B36F0 /* SwipeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E75AF020420D7B002B36F0 /* SwipeNavigationController.swift */; };
-		60E75AF320420EDC002B36F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 60E75AF220420EDC002B36F0 /* Localizable.strings */; };
+		60E75B01204220E8002B36F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 60E75B00204220E7002B36F0 /* Localizable.strings */; };
+		60F0764B2042E3FA002B6686 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F0764A2042E3FA002B6686 /* Entry.swift */; };
 		60FB5968203EF6800050AC47 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60FB5967203EF6800050AC47 /* Onboarding.storyboard */; };
 		60FB596B203EF69F0050AC47 /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB596A203EF69F0050AC47 /* GoalViewController.swift */; };
 		60FB596D203EF6A30050AC47 /* GulpsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB596C203EF6A30050AC47 /* GulpsViewController.swift */; };
@@ -49,14 +49,14 @@
 		60AF250C203F80B50052C90A /* drop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = drop.caf; sourceTree = "<group>"; };
 		60AF7DF1203F24DA00F7288C /* ProgressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressController.swift; sourceTree = "<group>"; };
 		60B42F25203F8228000EEC08 /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
-		60B42F29203F86E8000EEC08 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		60B97D94203EEA7C000C3BF3 /* DripDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DripDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60B97D97203EEA7C000C3BF3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60B97D99203EEA7C000C3BF3 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		60B97D9E203EEA7C000C3BF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60B97DA3203EEA7C000C3BF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60E75AF020420D7B002B36F0 /* SwipeNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeNavigationController.swift; sourceTree = "<group>"; };
-		60E75AF220420EDC002B36F0 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		60E75B00204220E7002B36F0 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		60F0764A2042E3FA002B6686 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		60FB5967203EF6800050AC47 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		60FB596A203EF69F0050AC47 /* GoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
 		60FB596C203EF6A30050AC47 /* GulpsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GulpsViewController.swift; sourceTree = "<group>"; };
@@ -107,8 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				603A99A520404F2F00D16A32 /* CoreDataManager.swift */,
-				60B42F29203F86E8000EEC08 /* Entry.swift */,
 				603A99A72040546600D16A32 /* CoreDataModels.xcdatamodeld */,
+				60F0764A2042E3FA002B6686 /* Entry.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -180,9 +180,9 @@
 		60FB5979203EF72A0050AC47 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				60E75B00204220E7002B36F0 /* Localizable.strings */,
 				60B42F25203F8228000EEC08 /* SplashScreen.storyboard */,
 				60B97D9E203EEA7C000C3BF3 /* Assets.xcassets */,
-				60E75AF220420EDC002B36F0 /* Localizable.strings */,
 				60AF250C203F80B50052C90A /* drop.caf */,
 				60FB5978203EF71A0050AC47 /* Font */,
 			);
@@ -249,7 +249,6 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 			);
 			mainGroup = 60B97D8B203EEA7C000C3BF3;
@@ -270,7 +269,7 @@
 				60B97D9F203EEA7C000C3BF3 /* Assets.xcassets in Resources */,
 				60FB5968203EF6800050AC47 /* Onboarding.storyboard in Resources */,
 				60FB5975203EF6F90050AC47 /* KaushanScript.ttf in Resources */,
-				60E75AF320420EDC002B36F0 /* Localizable.strings in Resources */,
+				60E75B01204220E8002B36F0 /* Localizable.strings in Resources */,
 				60AF250D203F80B60052C90A /* drop.caf in Resources */,
 				60FB5977203EF6FE0050AC47 /* Lato-Light.ttf in Resources */,
 				60B42F26203F8228000EEC08 /* SplashScreen.storyboard in Resources */,
@@ -356,10 +355,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60F0764B2042E3FA002B6686 /* Entry.swift in Sources */,
 				60FB596B203EF69F0050AC47 /* GoalViewController.swift in Sources */,
 				60FB5984203EF7EA0050AC47 /* Colors.swift in Sources */,
 				60E75AF120420D7B002B36F0 /* SwipeNavigationController.swift in Sources */,
-				60B42F2A203F86E8000EEC08 /* Entry.swift in Sources */,
 				60B97D9A203EEA7C000C3BF3 /* MainController.swift in Sources */,
 				60FB5971203EF6AE0050AC47 /* NotificationViewController.swift in Sources */,
 				60FB5988203EF7F50050AC47 /* NotificationHelper.swift in Sources */,

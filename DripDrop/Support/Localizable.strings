@@ -29,6 +29,8 @@
 "from:" = "From:";
 "to:" = "To:";
 "every:" = "Every:";
+"export.health" = "Export data to Health";
+"remind me to drink" = "Remind me to drink";
 
 /* Today ext */
 "way to go" = "Way to go!";

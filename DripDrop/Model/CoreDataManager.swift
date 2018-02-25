@@ -7,6 +7,7 @@
 //
 
 import CoreData
+import CVCalendar
 
 struct CoreDataManager {
     
@@ -76,6 +77,37 @@ struct CoreDataManager {
         }
     }
     
+    func addExtraGulp(size: Double, date: Date) {
+//        HealthKitHelper.sharedHelper.saveSample(quantity, date: date)
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        let gulp = NSEntityDescription.insertNewObject(forEntityName: "Gulp", into: context) as! Gulp
+        var entry = CoreDataManager.shared.entryForDate(Date())
+        
+        if entry == nil {
+            print("creating new entry")
+            entry = NSEntityDescription.insertNewObject(forEntityName: "Entry", into: context) as? Entry
+        }
+        
+        let date = Date()
+        entry?.date = date
+        entry?.quantity += size
+        entry?.goal = 2.0
+        entry?.percentage = ((entry?.quantity)! / (entry?.goal)!) * 100.0
+        
+        
+        gulp.date = date
+        gulp.quantity = size
+        
+        gulp.entry = entry
+        
+        do {
+            try context.save()
+            
+        } catch let saveErr {
+            print("Failed to save entry:", saveErr)
+        }
+    }
+    
     func createEntryForDate(_ date: Date) -> Entry {
         let contex = CoreDataManager.shared.persistentContainer.viewContext
         let newEntry = NSEntityDescription.insertNewObject(forEntityName: "Entry", into: contex) as! Entry
@@ -109,54 +141,55 @@ struct CoreDataManager {
     }
 
     
+  
+    
+    
     func entryForDate(_ date: Date) -> Entry? {
         let context = CoreDataManager.shared.persistentContainer.viewContext
         let request = NSFetchRequest<Entry>(entityName: "Entry")
         var result = [Entry]()
+        
+        
         // Get the current calendar with local time zone
         var calendar = Calendar.current
         calendar.timeZone = NSTimeZone.local
         
-        // Get today's beginning & end
-        let dateFrom = calendar.startOfDay(for: Date()) // eg. 2016-10-10 00:00:00
-        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute],from: dateFrom)
-        components.day! += 1
-        let dateTo = calendar.date(from: components)! // eg. 2016-10-11 00:00:00
-        // Note: Times are printed in UTC. Depending on where you live it won't print 00:00:00 but it will work with UTC times which can be converted to local time
-        
-        // Set predicate as date being today's date
-        let datePredicate = NSPredicate(format: "(%@ <= date) AND (date < %@)", argumentArray: [dateFrom, dateTo])
-        request.predicate = datePredicate
-        request.returnsObjectsAsFaults = false
+    
+        let startDate = calendar.startOfDay(for: date)
+        let endDate = calendar.date(byAdding: .day, value: 1, to: startDate)
+
+        let predicate = NSPredicate(format: "date >= %@ AND date < %@", startDate as! CVarArg, endDate! as CVarArg)
+        request.predicate = predicate
 
         do {
             result = try context.fetch(request)
+            return result.first
         } catch {
             let fetchError = error as NSError
             print(fetchError)
         }
-        return result.first
+        return nil
     }
 
     
-    func fetchEntries() -> [Entry] {
-        let context = persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<Entry>(entityName: "Entry")
-        do {
-            let entries = try context.fetch(fetchRequest)
-            print("--------------------------------")
-            for i in entries {
-                for x in i.gulps! {
-                    print ("OVO JE GULP: \(x) ")
-                }
-            }
-            return entries
-        } catch let fetchErr {
-            print("Failed to fetch companies:", fetchErr)
-            return []
-        }
-    }
+//    func fetchEntries() -> [Entry] {
+//        let context = persistentContainer.viewContext
+//
+//        let fetchRequest = NSFetchRequest<Entry>(entityName: "Entry")
+//        do {
+//            let entries = try context.fetch(fetchRequest)
+//            print("--------------------------------")
+//            for i in entries {
+//                for x in i.gulps! {
+//                    print ("OVO JE GULP: \(x) ")
+//                }
+//            }
+//            return entries
+//        } catch let fetchErr {
+//            print("Failed to fetch companies:", fetchErr)
+//            return []
+//        }
+//    }
 
     func currentPercentage() -> Double {
         return currentEntry().percentage
@@ -170,22 +203,25 @@ struct CoreDataManager {
         let context = CoreDataManager.shared.persistentContainer.viewContext
         let entry = currentEntry()
         if let gulps = entry.gulps {
-            let lastGulp = gulps.allObjects[gulps.count - 1] as! Gulp
-            entry.quantity -= lastGulp.quantity
-            if entry.goal > 0 {
-                entry.percentage = (entry.quantity / entry.goal) * 100.0
-            }
-         
-            if (entry.percentage < 0) {
-                entry.percentage = 0
-            }
-            
-            context.delete(lastGulp)
-            do {
-                try context.save()
-                print("gulp deleted")
-            } catch let saveErr {
-                print("Failed to delete gulp:", saveErr)
+            let index = gulps.count - 1
+            if index >= 0 {
+                let lastGulp = gulps.allObjects[index] as! Gulp
+                entry.quantity -= lastGulp.quantity
+                if entry.goal > 0 {
+                    entry.percentage = (entry.quantity / entry.goal) * 100.0
+                }
+                
+                if (entry.percentage < 0) {
+                    entry.percentage = 0
+                }
+                
+                context.delete(lastGulp)
+                do {
+                    try context.save()
+                    print("gulp deleted")
+                } catch let saveErr {
+                    print("Failed to delete gulp:", saveErr)
+                }
             }
         }
     }

@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let img1 = #imageLiteral(resourceName: "calendar-icon").withRenderingMode(.alwaysTemplate)
         let img2 = #imageLiteral(resourceName: "big").withRenderingMode(.alwaysOriginal)
-        let img3 = #imageLiteral(resourceName: "settings-icon").withRenderingMode(.alwaysTemplate)
+        let img3 = #imageLiteral(resourceName: "Settings").withRenderingMode(.alwaysTemplate)
         
         let items = [UIImageView(image: img1), UIImageView(image: img2), UIImageView(image: img3)]
         let controllers: [UIViewController] = [vc1, vc2, vc3]

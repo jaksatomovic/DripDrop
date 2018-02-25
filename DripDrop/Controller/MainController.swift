@@ -40,6 +40,7 @@ class MainController: UIViewController, UIAlertViewDelegate {
         button.setTitle("Drink", for: .normal)
         button.setTitleColor(Palette.palette_main, for: .normal)
         button.addTarget(self, action: #selector(MainController.addButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(MainController.addButtonTouched), for: .touchDown)
         return button
     }()
     
@@ -56,7 +57,7 @@ class MainController: UIViewController, UIAlertViewDelegate {
         let button = UIButton()
         button.clipsToBounds = true
         button.layer.cornerRadius = 10
-        button.backgroundColor = .lightGray
+        button.backgroundColor = UIColor(red: 236/255, green: 236/255, blue: 236/255, alpha: 1)
         button.setImage(#imageLiteral(resourceName: "minus-icon").withRenderingMode(.alwaysOriginal), for: .normal)
         button.addTarget(self, action: #selector(MainController.removeGulpAction), for: .touchUpInside)
         return button
@@ -100,18 +101,15 @@ class MainController: UIViewController, UIAlertViewDelegate {
         Globals.showPopTipOnceForKey("HEALTH_HINT", userDefaults: userDefaults,
                                      popTipText: NSLocalizedString("health.poptip", comment: ""),
                                      inView: view,
-                                     fromFrame: CGRect(x: view.frame.width - 60, y: view.frame.height, width: 1, height: 1), direction: .left, color: .palette_destructive)
+                                     fromFrame: CGRect(x: view.frame.width - 60, y: 50, width: 1, height: 1), direction: .down, color: .palette_destructive)
     }
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        
         setupViews()
         view.layoutIfNeeded()
         initProgressMeter()
-        
-        print(CoreDataManager.shared.fetchEntries())
         
         percentageLabel.animationDuration = 1.5
         percentageLabel.format = "%d%%";
@@ -139,14 +137,19 @@ class MainController: UIViewController, UIAlertViewDelegate {
         view.addSubview(meterContainerView)
         view.addSubview(addButton)
         view.bringSubview(toFront: addButton)
+
+        starButton.isHidden = true
+        let longGesture = UILongPressGestureRecognizer(target: self, action: #selector(addButtonLongPress))
+        addButton.addGestureRecognizer(longGesture)
+
         
-        starButton.anchor(nil, left: percentageLabel.centerXAnchor, bottom: percentageLabel.topAnchor, right: nil, topConstant: 0, leftConstant: -15, bottomConstant: 20, rightConstant: 0, widthConstant: 30, heightConstant: 30)
+        starButton.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: nil, topConstant: 5, leftConstant: 12, bottomConstant: 0, rightConstant: 0, widthConstant: 30, heightConstant: 30)
         
-        minusButton.anchor(starButton.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 35, widthConstant: 20, heightConstant: 20)
+        minusButton.anchor(view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, topConstant: 10, leftConstant: 0, bottomConstant: 0, rightConstant: 24, widthConstant: 20, heightConstant: 20)
         
         percentageLabel.anchor(nil, left: view.leftAnchor, bottom: meterContainerView.topAnchor, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 30, rightConstant: 0, widthConstant: 0, heightConstant: 60)
         
-        meterContainerView.anchor(view.centerYAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: -view.frame.width/2, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: view.frame.width)
+        meterContainerView.anchor(view.centerYAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: -view.frame.width/2 - 30, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: view.frame.width)
         meterContainerView.addSubview(maskImage)
         maskImage.fillSuperview()
         
@@ -183,6 +186,11 @@ class MainController: UIViewController, UIAlertViewDelegate {
         let percentage = CoreDataManager.shared.currentPercentage()
         percentageLabel.countFromCurrentValue(to: CGFloat(round(percentage)))
         var fillTo = Double(percentage / 100.0)
+        if CGFloat(round(percentage)) == 0 {
+            minusButton.isHidden = true
+        } else {
+            minusButton.isHidden = false
+        }
         if fillTo > 1 {
             fillTo = 1
         }
@@ -207,6 +215,9 @@ class MainController: UIViewController, UIAlertViewDelegate {
     }
 
     @objc func addButtonPressed() {
+//        minusButton.isHidden = false
+        addButton.setTitleColor(Palette.palette_main, for: .normal)
+        addButton.backgroundColor = .white
         Globals.showPopTipOnceForKey("UNDO_HINT", userDefaults: userDefaults,
                                      popTipText: NSLocalizedString("undo poptip", comment: ""),
                                      inView: view,
@@ -215,6 +226,15 @@ class MainController: UIViewController, UIAlertViewDelegate {
         let portion = Constants.Gulp.small.key()
         updateCurrentEntry(userDefaults.double(forKey: portion))
         
+    }
+    
+    @objc func addButtonLongPress() {
+        print("long press...")
+    }
+    
+    @objc func addButtonTouched() {
+        addButton.setTitleColor(UIColor.white, for: .normal)
+        addButton.backgroundColor = Palette.palette_main
     }
  
     
