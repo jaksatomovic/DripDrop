@@ -16,6 +16,7 @@ public enum Constants {
       }
     }
   }
+    
 
   public enum UnitsOfMeasure: Int {
     case liters, ounces
@@ -65,6 +66,26 @@ public enum Constants {
       }
     }
   }
+    
+    public enum Sex: Int {
+        case sex
+        public func key() -> String {
+            switch self {
+            case .sex:
+                return "SEX"
+            }
+        }
+    }
+    
+    public enum Birthday: Int {
+        case birthday
+        public func key() -> String {
+            switch self {
+            case .birthday:
+                return "BIRTHDAY"
+            }
+        }
+    }
 
   public enum Health: Int {
     case on

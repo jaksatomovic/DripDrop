@@ -90,7 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         })
         
-        self.window?.rootViewController = UINavigationController(rootViewController: self.controller)
+        self.window?.rootViewController = SwipeNavigationController(rootViewController: self.controller)
     }
     
  
@@ -132,8 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      */
     func loadMainInterface() {
 //        realmNotification = watchConnectivityHelper.setupWatchUpdates()
-        let vc = MainController()
-        self.window?.rootViewController = SwipeNavigationController(rootViewController: vc)
+        setupSwipeMenu()
     }
     
 }

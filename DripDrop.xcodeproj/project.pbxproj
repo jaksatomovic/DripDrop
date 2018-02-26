@@ -22,11 +22,8 @@
 		60E75B01204220E8002B36F0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 60E75B00204220E7002B36F0 /* Localizable.strings */; };
 		60F0764B2042E3FA002B6686 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F0764A2042E3FA002B6686 /* Entry.swift */; };
 		60FB5968203EF6800050AC47 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60FB5967203EF6800050AC47 /* Onboarding.storyboard */; };
-		60FB596B203EF69F0050AC47 /* GoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB596A203EF69F0050AC47 /* GoalViewController.swift */; };
-		60FB596D203EF6A30050AC47 /* GulpsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB596C203EF6A30050AC47 /* GulpsViewController.swift */; };
-		60FB596F203EF6AA0050AC47 /* MeasureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB596E203EF6AA0050AC47 /* MeasureViewController.swift */; };
-		60FB5971203EF6AE0050AC47 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB5970203EF6AE0050AC47 /* NotificationViewController.swift */; };
-		60FB5973203EF6B20050AC47 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB5972203EF6B20050AC47 /* OnboardingViewController.swift */; };
+		60FB5971203EF6AE0050AC47 /* NotificationOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB5970203EF6AE0050AC47 /* NotificationOld.swift */; };
+		60FB5973203EF6B20050AC47 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB5972203EF6B20050AC47 /* WelcomeController.swift */; };
 		60FB5975203EF6F90050AC47 /* KaushanScript.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60FB5974203EF6F90050AC47 /* KaushanScript.ttf */; };
 		60FB5977203EF6FE0050AC47 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60FB5976203EF6FE0050AC47 /* Lato-Light.ttf */; };
 		60FB597E203EF7BE0050AC47 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB597D203EF7BE0050AC47 /* Settings.swift */; };
@@ -35,6 +32,13 @@
 		60FB5986203EF7EE0050AC47 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB5985203EF7EE0050AC47 /* Globals.swift */; };
 		60FB5988203EF7F50050AC47 /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB5987203EF7F50050AC47 /* NotificationHelper.swift */; };
 		60FB598A203EF8F00050AC47 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FB5989203EF8F00050AC47 /* Extensions.swift */; };
+		60FC38652044396F005DDAFD /* HelpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC385F2044396F005DDAFD /* HelpController.swift */; };
+		60FC386B20443A36005DDAFD /* SexController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC386A20443A36005DDAFD /* SexController.swift */; };
+		60FC386F20443A67005DDAFD /* UnitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC386E20443A67005DDAFD /* UnitController.swift */; };
+		60FC387120443A81005DDAFD /* GulpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC387020443A81005DDAFD /* GulpController.swift */; };
+		60FC387320443FE2005DDAFD /* AgeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC387220443FE2005DDAFD /* AgeController.swift */; };
+		60FC387520443FF3005DDAFD /* SleepController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC387420443FF3005DDAFD /* SleepController.swift */; };
+		60FC387720443FFC005DDAFD /* WakeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FC387620443FFC005DDAFD /* WakeController.swift */; };
 		D3E7400C08641D04B9DB747D /* Pods_DripDrop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBC673B1853D0D9B3283C64F /* Pods_DripDrop.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,11 +62,8 @@
 		60E75B00204220E7002B36F0 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		60F0764A2042E3FA002B6686 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		60FB5967203EF6800050AC47 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
-		60FB596A203EF69F0050AC47 /* GoalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
-		60FB596C203EF6A30050AC47 /* GulpsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GulpsViewController.swift; sourceTree = "<group>"; };
-		60FB596E203EF6AA0050AC47 /* MeasureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasureViewController.swift; sourceTree = "<group>"; };
-		60FB5970203EF6AE0050AC47 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
-		60FB5972203EF6B20050AC47 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		60FB5970203EF6AE0050AC47 /* NotificationOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationOld.swift; sourceTree = "<group>"; };
+		60FB5972203EF6B20050AC47 /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
 		60FB5974203EF6F90050AC47 /* KaushanScript.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KaushanScript.ttf; sourceTree = "<group>"; };
 		60FB5976203EF6FE0050AC47 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		60FB597D203EF7BE0050AC47 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -71,6 +72,13 @@
 		60FB5985203EF7EE0050AC47 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		60FB5987203EF7F50050AC47 /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
 		60FB5989203EF8F00050AC47 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		60FC385F2044396F005DDAFD /* HelpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpController.swift; sourceTree = "<group>"; };
+		60FC386A20443A36005DDAFD /* SexController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SexController.swift; sourceTree = "<group>"; };
+		60FC386E20443A67005DDAFD /* UnitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitController.swift; sourceTree = "<group>"; };
+		60FC387020443A81005DDAFD /* GulpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GulpController.swift; sourceTree = "<group>"; };
+		60FC387220443FE2005DDAFD /* AgeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeController.swift; sourceTree = "<group>"; };
+		60FC387420443FF3005DDAFD /* SleepController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepController.swift; sourceTree = "<group>"; };
+		60FC387620443FFC005DDAFD /* WakeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeController.swift; sourceTree = "<group>"; };
 		EBC673B1853D0D9B3283C64F /* Pods_DripDrop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DripDrop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -158,12 +166,15 @@
 		60FB5969203EF6870050AC47 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				60FB5972203EF6B20050AC47 /* WelcomeController.swift */,
+				60FC386E20443A67005DDAFD /* UnitController.swift */,
+				60FC387020443A81005DDAFD /* GulpController.swift */,
+				60FC386A20443A36005DDAFD /* SexController.swift */,
+				60FC387220443FE2005DDAFD /* AgeController.swift */,
+				60FC387620443FFC005DDAFD /* WakeController.swift */,
+				60FC387420443FF3005DDAFD /* SleepController.swift */,
+				60FC385F2044396F005DDAFD /* HelpController.swift */,
 				60FB5967203EF6800050AC47 /* Onboarding.storyboard */,
-				60FB596A203EF69F0050AC47 /* GoalViewController.swift */,
-				60FB596C203EF6A30050AC47 /* GulpsViewController.swift */,
-				60FB596E203EF6AA0050AC47 /* MeasureViewController.swift */,
-				60FB5970203EF6AE0050AC47 /* NotificationViewController.swift */,
-				60FB5972203EF6B20050AC47 /* OnboardingViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -192,6 +203,7 @@
 		60FB597C203EF7B60050AC47 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				60FB5970203EF6AE0050AC47 /* NotificationOld.swift */,
 				601B0BF2203F0E0F00A59175 /* UIView+Anchors.swift */,
 				60AF2504203F378E0052C90A /* PagingView.swift */,
 				60E75AF020420D7B002B36F0 /* SwipeNavigationController.swift */,
@@ -355,27 +367,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60FC386F20443A67005DDAFD /* UnitController.swift in Sources */,
 				60F0764B2042E3FA002B6686 /* Entry.swift in Sources */,
-				60FB596B203EF69F0050AC47 /* GoalViewController.swift in Sources */,
 				60FB5984203EF7EA0050AC47 /* Colors.swift in Sources */,
 				60E75AF120420D7B002B36F0 /* SwipeNavigationController.swift in Sources */,
 				60B97D9A203EEA7C000C3BF3 /* MainController.swift in Sources */,
-				60FB5971203EF6AE0050AC47 /* NotificationViewController.swift in Sources */,
+				60FB5971203EF6AE0050AC47 /* NotificationOld.swift in Sources */,
 				60FB5988203EF7F50050AC47 /* NotificationHelper.swift in Sources */,
 				60FB5986203EF7EE0050AC47 /* Globals.swift in Sources */,
 				601B0BF3203F0E0F00A59175 /* UIView+Anchors.swift in Sources */,
 				603A99A620404F2F00D16A32 /* CoreDataManager.swift in Sources */,
 				60AF7DF2203F24DA00F7288C /* ProgressController.swift in Sources */,
 				600F628E203F170000A5A340 /* SettingsController.swift in Sources */,
+				60FC386B20443A36005DDAFD /* SexController.swift in Sources */,
+				60FC387520443FF3005DDAFD /* SleepController.swift in Sources */,
 				603A99A92040546600D16A32 /* CoreDataModels.xcdatamodeld in Sources */,
-				60FB596D203EF6A30050AC47 /* GulpsViewController.swift in Sources */,
 				60FB5980203EF7C90050AC47 /* Constants.swift in Sources */,
 				60FB598A203EF8F00050AC47 /* Extensions.swift in Sources */,
 				60AF2505203F378E0052C90A /* PagingView.swift in Sources */,
-				60FB5973203EF6B20050AC47 /* OnboardingViewController.swift in Sources */,
+				60FC38652044396F005DDAFD /* HelpController.swift in Sources */,
+				60FB5973203EF6B20050AC47 /* WelcomeController.swift in Sources */,
 				60FB597E203EF7BE0050AC47 /* Settings.swift in Sources */,
-				60FB596F203EF6AA0050AC47 /* MeasureViewController.swift in Sources */,
+				60FC387720443FFC005DDAFD /* WakeController.swift in Sources */,
+				60FC387320443FE2005DDAFD /* AgeController.swift in Sources */,
 				60B97D98203EEA7C000C3BF3 /* AppDelegate.swift in Sources */,
+				60FC387120443A81005DDAFD /* GulpController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

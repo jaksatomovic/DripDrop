@@ -34,16 +34,7 @@ class ProgressController: UIViewController {
         label.font = UIFont.init(name: "KaushanScript-Regular", size: 34.0)
         return label
     }()
-    
-//    var addButton: UIButton = {
-//        let button = UIButton()
-//        button.layer.cornerRadius = 10
-//        button.clipsToBounds = true
-//        button.backgroundColor = .clear
-//        button.setImage(#imageLiteral(resourceName: "tiny-add").withRenderingMode(.alwaysOriginal), for: .normal)
-//        button.addTarget(self, action: #selector(addGulp), for: .touchUpInside)
-//        return button
-//    }()
+
     
     var shareButton: UIButton = {
         let button = UIButton()
@@ -57,20 +48,6 @@ class ProgressController: UIViewController {
         return button
     }()
     
-//    lazy var actionSheet: AHKActionSheet = {
-//        var actionSheet = AHKActionSheet(title: NSLocalizedString("portion.add", comment: ""))
-//        actionSheet?.addButton(withTitle: NSLocalizedString("gulp.small", comment: ""), type: .default) { _ in
-//            self.addExtraGulp(ofSize: .small)
-////            let vc = MainController()
-////            vc.updateUI()
-//        }
-//        actionSheet?.addButton(withTitle: NSLocalizedString("gulp.big", comment: ""), type: .default) { _ in
-//            self.addExtraGulp(ofSize: .big)
-////            let vc = MainController()
-////            vc.updateUI()
-//        }
-//        return actionSheet!
-//    }()
     
     let shareExclusions = [
         UIActivityType.airDrop, UIActivityType.assignToContact, UIActivityType.addToReadingList,
@@ -120,30 +97,14 @@ class ProgressController: UIViewController {
         view.addSubview(calendarMenu)
         
         calendarMenu.anchor(view.topAnchor, left: view.leftAnchor, bottom: calendarContent.topAnchor, right: view.rightAnchor, topConstant: 10, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 15)
-        calendarContent.anchor(calendarMenu.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 300)
+        calendarContent.anchor(calendarMenu.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: view.frame.height/2)
         
         percentageLabel.anchor(calendarContent.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 20, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 50)
-        
-//        addButton.anchor(percentageLabel.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, topConstant: 15, leftConstant: 0, bottomConstant: 0, rightConstant: 24, widthConstant: 20, heightConstant: 20)
-        
+       
 //        shareButton.anchor(percentageLabel.bottomAnchor, left: view.centerXAnchor, bottom: nil, right: nil, topConstant: 50, leftConstant: -25, bottomConstant: 0, rightConstant: 0, widthConstant: 50, heightConstant: 50)
         
     }
-    
-//    @objc func addGulp() {
-//        actionSheet.show()
-//    }
-//
-//    func addExtraGulp(ofSize: Constants.Gulp) {
-//        let selectedDate = calendarContent.coordinator.selectedDayView?.date.convertedDate()
-//        CoreDataManager.shared.addExtraGulp(size: UserDefaults.groupUserDefaults().double(forKey: ofSize.key()), date: selectedDate!)
-//        updateCalendarView()
-//        if let date = selectedDate {
-//            percentageLabel.text = dateLabelString(date)
-//        } else {
-//            percentageLabel.text = dateLabelString(Date())
-//        }
-//    }
+
     
 }
 

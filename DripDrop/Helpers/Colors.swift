@@ -17,8 +17,13 @@ extension Palette {
   class var palette_destructive: UIColor {
     return UIColor(red:0.75, green:0.22, blue:0.17, alpha:1)
   }
+    
+    class var palette_lightBlue: UIColor {
+        return UIColor(red: 112/255, green: 200/255, blue: 224/255, alpha: 1.0)
+    }
 
   class var palette_lightGray: UIColor {
     return UIColor(red:0.91, green:0.91, blue:0.92, alpha:1)
   }
+
 }
